@@ -59,6 +59,9 @@ namespace ofxGIF
 
 	//----------------------------------------------------
 	FIBITMAP* getBmpFromPixels(ofPixels &pix){
+
+		pix.swapRgb();			// should add this
+
 		unsigned char* pixels = pix.getPixels();
 		unsigned int width = pix.getWidth();
 		unsigned int height = pix.getHeight();
@@ -139,7 +142,7 @@ namespace ofxGIF
 	//////////////////////////////////////////////////////////////////////////
 	void fiGifSaver::create(string filename)
 	{
-		filename = ofToDataPath(filename);
+		//filename = ofToDataPath(filename);
 		FREE_IMAGE_FORMAT fif = FreeImage_GetFIFFromFilename(filename.c_str());
 		gif = FreeImage_OpenMultiBitmap(fif, filename.c_str(), TRUE, FALSE, TRUE);
 	}
